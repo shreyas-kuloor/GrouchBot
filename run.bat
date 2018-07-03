@@ -1,3 +1,3 @@
 :start
-python my_bot.py
+python grouchbot.py
 goto start
