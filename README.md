@@ -1,4 +1,5 @@
 ![GrouchBot](https://i.imgur.com/sT4OG9t.jpg)
+#
 A discord bot that performs a variety of functions.
 
 ## Invitation
