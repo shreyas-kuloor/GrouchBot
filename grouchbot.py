@@ -11,9 +11,9 @@ from googleapiclient.errors import HttpError
 
 
 BOT_PREFIX = "!"
-TOKEN = "Insert Bot Token Here"
+TOKEN = "NDYzMzk2NTg0MjQ4MzExODE3.DhvzPA.sBFpSxeNMN6vLP19A8GUxu7W0Wc"
 
-YOUTUBE_DEV_KEY = 'Insert Google API Key Here'
+YOUTUBE_DEV_KEY = 'AIzaSyCw4VEcKUJCaX-_QF7RnZlCvemRcV8tHZ4'
 YOUTUBE_API_SVC_NAME = 'youtube'
 YOUTUBE_API_VER = 'v3'
 
@@ -273,10 +273,10 @@ async def queue(ctx):
 
 
 def image_search(term: str):
-    service = build("customsearch", "v1", developerKey='Insert Google API Key Here')
+    service = build("customsearch", "v1", developerKey='AIzaSyCw4VEcKUJCaX-_QF7RnZlCvemRcV8tHZ4')
 
     response = service.cse().list(q=term, num=1, start=1, imgSize="medium", searchType="image",
-                                  cx='Insert Custom Search Engine Key Here').execute()
+                                  cx='003373562073210544530:plytdkihuaw').execute()
 
     result = response.get('items', [])
     img_url = result[0]['link']
@@ -377,6 +377,9 @@ async def mundo(ctx, num):
             player = voice.create_ffmpeg_player('audio_files\Mundo8.mp3', after=change_playing)
         elif num == "8":
             player = voice.create_ffmpeg_player('audio_files\Mundo9.mp3', after=change_playing)
+        else:
+            await client.say("Mundo too strong for you! Please choose 1-8 for Mundo, he doesn't feel "
+                             "like saying much else!")
 
         player.start()
 
