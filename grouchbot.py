@@ -355,6 +355,10 @@ async def mundo(ctx, num):
             await client.say("Wait for the current sound to finish playing, then try again.")
             return
         
+        if voice is None:
+            await client.join_voice_channel(channel)
+            voice = client.voice_client_in(server)
+
         if num == "1":
             player = voice.create_ffmpeg_player('audio_files\Mundo1.mp3', after=change_playing)
         elif num == "2":
@@ -374,12 +378,8 @@ async def mundo(ctx, num):
         else:
             await client.say("Mundo too strong for you! Please choose 1-8 for Mundo, he doesn't feel "
                              "like saying much else!")
-            return
-
-        if voice is None:
-            await client.join_voice_channel(channel)
-            voice = client.voice_client_in(server)
-
+            return        
+        
         sound_playing = True
 
         player.start()
