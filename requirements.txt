@@ -1,0 +1,4 @@
+discord.py
+google-api-python-client
+youtube-dl
+requests
