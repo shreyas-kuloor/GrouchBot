@@ -11,9 +11,9 @@ from googleapiclient.errors import HttpError
 
 
 BOT_PREFIX = "!"
-TOKEN = "NDYzMzk2NTg0MjQ4MzExODE3.DhvzPA.sBFpSxeNMN6vLP19A8GUxu7W0Wc"
+TOKEN = "Insert Bot Token Here"
 
-YOUTUBE_DEV_KEY = 'AIzaSyCw4VEcKUJCaX-_QF7RnZlCvemRcV8tHZ4'
+YOUTUBE_DEV_KEY = 'Insert Google API Key Here'
 YOUTUBE_API_SVC_NAME = 'youtube'
 YOUTUBE_API_VER = 'v3'
 
@@ -273,10 +273,10 @@ async def queue(ctx):
 
 
 def image_search(term: str):
-    service = build("customsearch", "v1", developerKey='AIzaSyCw4VEcKUJCaX-_QF7RnZlCvemRcV8tHZ4')
+    service = build("customsearch", "v1", developerKey='Insert Google API Key Here')
 
     response = service.cse().list(q=term, num=1, start=1, imgSize="medium", searchType="image",
-                                  cx='003373562073210544530:plytdkihuaw').execute()
+                                  cx='Insert Custom Search Engine Key Here').execute()
 
     result = response.get('items', [])
     img_url = result[0]['link']
