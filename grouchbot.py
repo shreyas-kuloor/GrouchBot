@@ -11,9 +11,9 @@ from googleapiclient.errors import HttpError
 
 
 BOT_PREFIX = "!"
-TOKEN = "BOT TOKEN HERE"
+TOKEN = "NDYzMzk2NTg0MjQ4MzExODE3.DhvzPA.sBFpSxeNMN6vLP19A8GUxu7W0Wc"
 
-YOUTUBE_DEV_KEY = 'GOOGLE API KEY HERE'
+YOUTUBE_DEV_KEY = 'AIzaSyCw4VEcKUJCaX-_QF7RnZlCvemRcV8tHZ4'
 YOUTUBE_API_SVC_NAME = 'youtube'
 YOUTUBE_API_VER = 'v3'
 
@@ -273,10 +273,10 @@ async def queue(ctx):
 
 
 def image_search(term: str):
-    service = build("customsearch", "v1", developerKey='GOOGLE API KEY HERE')
+    service = build("customsearch", "v1", developerKey='AIzaSyCw4VEcKUJCaX-_QF7RnZlCvemRcV8tHZ4')
 
     response = service.cse().list(q=term, num=1, start=1, imgSize="medium", searchType="image",
-                                  cx='CUSTOM SEARCH ENGINE KEY HERE').execute()
+                                  cx='003373562073210544530:plytdkihuaw').execute()
 
     result = response.get('items', [])
     img_url = result[0]['link']
@@ -354,7 +354,7 @@ async def mundo(ctx, num):
         if sound_playing:
             await client.say("Wait for the current sound to finish playing, then try again.")
             return
-        
+
         if voice is None:
             await client.join_voice_channel(channel)
             voice = client.voice_client_in(server)
@@ -378,8 +378,8 @@ async def mundo(ctx, num):
         else:
             await client.say("Mundo too strong for you! Please choose 1-8 for Mundo, he doesn't feel "
                              "like saying much else!")
-            return        
-        
+            return
+
         sound_playing = True
 
         player.start()
@@ -426,5 +426,5 @@ async def help(ctx):
     await client.send_message(destination=ctx.message.author, content="**Here is a list of my commands!**")
     await client.send_message(destination=ctx.message.author, embed=embed)
 
-
+#pip install: requests, discord.py, youtube_dl
 client.run(TOKEN)
