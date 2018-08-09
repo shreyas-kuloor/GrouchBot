@@ -30,7 +30,6 @@ async def face():
         ':eye: :lips: :eye:',
         ':joy: :ok_hand: ',
         ':eye: :tongue: :eye:',
-        '<:XD:457548339391758336>',
         ':eye: :nose: :eye:',
     ]
     await client.say(random.choice(possible_faces))
@@ -97,11 +96,6 @@ async def color(ctx, col: str):
     await client.say(user.mention + ", your color has been changed to " + col + ".")
 
 
-@client.command(pass_context=True)
-async def huss(ctx):
-    await client.send_message(ctx.message.channel, "Watch Huss be super buff and paint himself green.", tts=True)
-
-
 @client.event
 async def on_message(message):
     user = message.author
@@ -123,15 +117,6 @@ async def qotd():
     quote = data['contents']['quotes'][0]['quote']
     author = data['contents']['quotes'][0]['author']
     await client.say('"' + quote + '"' + " - " + author)
-
-
-@client.command(pass_context=True)
-async def omega(ctx, *, msg: str):
-    new_string = msg.replace('o', '<:omegalul:461751500268371969>')
-    new_str = new_string.replace('O', '<:omegalul:461751500268371969>')
-    emoji = get(client.get_all_emojis(), name='omegalul')
-    await client.add_reaction(ctx.message, emoji)
-    await client.say(new_str)
 
 
 @client.command(pass_context=True)
@@ -295,41 +280,6 @@ def change_playing():
 
 
 @client.command(pass_context=True)
-async def hussbrain(ctx):
-    server = ctx.message.server
-
-    if server.id not in playlists:
-        playlists[server.id] = music_queue.SongQueue()
-
-    playlist = playlists[server.id]
-    if playlist.length() > 0:
-        await client.say("There is something currently playing or queued to play. Try again when the queue is empty.")
-        return
-    else:
-        channel = ctx.message.author.voice.voice_channel
-        if channel is None:
-            await client.say('You are not currently in a voice channel. Please join a voice channel before asking '
-                             'me to play audio!')
-            return
-
-        voice = client.voice_client_in(server)
-
-        global sound_playing
-
-        if sound_playing:
-            await client.say("Wait for the current sound to finish playing, then try again.")
-            return
-
-        if voice is None:
-            await client.join_voice_channel(channel)
-            voice = client.voice_client_in(server)
-
-        sound_playing = True
-        player = voice.create_ffmpeg_player('audio_files\Brain1.mp3', after=change_playing)
-        player.start()
-
-
-@client.command(pass_context=True)
 async def mundo(ctx, num):
     server = ctx.message.server
 
@@ -404,9 +354,7 @@ async def help(ctx):
     embed.add_field(name="!color [color]", value="Changes your name color in the server to the provided color. \n"
                                                  "Color Options: aqua, green, blue, purple, magenta, orange, red, "
                                                  "yellow, white", inline=False)
-    embed.add_field(name="!huss", value="Watch huss be super buff and paint himself green.", inline=False)
     embed.add_field(name="!qotd", value="Gets the quote of the day from the They Said So Quotes API.", inline=False)
-    embed.add_field(name="!omega [message]", value="Converts all o's in the message into OMEGALUL's.", inline=False)
     embed.add_field(name="!image [term]", value="Returns the first image found after a Google search using the "
                                                 "search term", inline=False)
     embed.add_field(name="!join", value="Invites the bot into the voice channel the user is currently in.",
@@ -422,7 +370,6 @@ async def help(ctx):
     embed.add_field(name="!clear", value="Clears the audio queue and stops the currently playing audio.", inline=False)
     embed.add_field(name="!queue", value="Displays the audio queue with song names and durations.", inline=False)
     embed.add_field(name="!mundo [1-8]", value="Mundo goes where he pleases.", inline=False)
-    embed.add_field(name="!hussbrain", value="Plays a live feed of Huss's brain into the voice channel.", inline=False)
     await client.send_message(destination=ctx.message.author, content="**Here is a list of my commands!**")
     await client.send_message(destination=ctx.message.author, embed=embed)
 
