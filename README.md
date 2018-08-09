@@ -3,7 +3,7 @@
 GrouchBot is a discord bot that performs a variety of functions. These include a calculator, changing nicknames, changing name color, image searches, an audio player, and more!
 
 ## Commands
-### !help
+##### !help
 Shows this message.
 !face
 Posts a random face out of a small selection into chat.
