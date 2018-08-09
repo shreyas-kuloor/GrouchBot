@@ -4,7 +4,7 @@ GrouchBot is a discord bot that performs a variety of functions. These include a
 
 ## Commands
 #### !help
-Shows this message.
+Shows a list of commands (very similar to this Commands section)
 #### !face
 Posts a random face out of a small selection into chat.
 #### !nick [nickname]
