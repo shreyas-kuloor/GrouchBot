@@ -47,4 +47,4 @@ Plays one of eight sound bits of Dr.Mundo from the game League of Legends.
 To get help and a more indepth description of commands, type !help after inviting GrouchBot to your server. He'll send you a PM with a list of commands and their functions. If you would like to invite this bot to your server and see it in action, please contact me personally at kuloor.shreyas@gmail.com
 
 ## Self-Hosting
-Instructions for hosting this bot for yourself are currently in progress. There's a few things I still need to get straightened out before I can add it here.
+Instructions for hosting this bot for yourself are currently in progress. There are a few things I still need to get straightened out before I can add it here.
